@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Drawflow Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        #drawflow {
+            width: 100%;
+            height: 100vh;
+            background: #1e1e1e;
+        }
+
+        .patch {
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="drawflow" class="drawflow"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/drawflow/dist/drawflow.min.js"></script>
+    <script>
+        const container = document.getElementById("drawflow");
+        const editor = new Drawflow(container);
+        editor.start();
+
+        editor.addNode('patch1', 0, 1, 100, 100, 'patch', {}, "<div>patch1</div>");
+        editor.addNode('display', 1, 0, 100, 200, 'patch', {}, "<div>display</div>");
+
+        editor.on('connectionCreated', (connection) => {
+            console.log('Connected:', connection);
+        });
+    </script>
+</body>
+
+</html>
